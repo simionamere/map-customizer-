@@ -1,0 +1,49 @@
+<!--
+  ════════════════════════════════════════════════════════════════
+  AndroidManifest.xml  –  PATCH INSTRUCTIONS
+  File location: android/app/src/main/AndroidManifest.xml
+
+  1. Add android:icon and android:roundIcon to <application>:
+  ════════════════════════════════════════════════════════════════
+-->
+<application
+    android:icon="@mipmap/ic_launcher"
+    android:roundIcon="@mipmap/ic_launcher_round"
+    android:label="ACT Map"
+    ...>
+
+    <!--
+      2. Register SplashActivity as the LAUNCHER (entry point).
+         Remove the LAUNCHER intent-filter from MainActivity.
+    -->
+    <activity
+        android:name=".SplashActivity"
+        android:theme="@style/Theme.App.SplashScreen"
+        android:exported="true">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN"/>
+            <category android:name="android.intent.category.LAUNCHER"/>
+        </intent-filter>
+    </activity>
+
+    <!--
+      3. MainActivity loses the LAUNCHER filter — SplashActivity
+         will start it after the animation completes.
+    -->
+    <activity
+        android:name=".MainActivity"
+        android:exported="false">
+        <!-- no intent-filter here -->
+    </activity>
+
+</application>
+
+<!--
+  ════════════════════════════════════════════════════════════════
+  Also add this dependency to android/app/build.gradle
+  (inside dependencies {}):
+
+      implementation 'androidx.core:core-splashscreen:1.0.1'
+
+  ════════════════════════════════════════════════════════════════
+-->
