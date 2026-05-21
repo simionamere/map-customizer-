@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Animated splash icon:
+  - Fades in from 0 → 1 opacity
+  - Scales up from 80% → 100%
+  Both run together over 600ms with a slight overshoot feel.
+-->
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt">
+
+    <aapt:attr name="android:drawable">
+        <vector
+            android:width="500dp"
+            android:height="500dp"
+            android:viewportWidth="500"
+            android:viewportHeight="500">
+            <group
+                android:name="splashGroup"
+                android:pivotX="250"
+                android:pivotY="250"
+                android:scaleX="1"
+                android:scaleY="1">
+                <path
+                    android:name="bg"
+                    android:fillColor="#00000000"
+                    android:pathData="M0,0 L500,0 L500,500 L0,500 Z"/>
+            </group>
+        </vector>
+    </aapt:attr>
+
+    <target android:name="splashGroup">
+        <aapt:attr name="android:animation">
+            <set>
+                <objectAnimator
+                    android:propertyName="scaleX"
+                    android:valueFrom="0.8"
+                    android:valueTo="1.0"
+                    android:duration="600"
+                    android:interpolator="@android:interpolator/overshoot"/>
+                <objectAnimator
+                    android:propertyName="scaleY"
+                    android:valueFrom="0.8"
+                    android:valueTo="1.0"
+                    android:duration="600"
+                    android:interpolator="@android:interpolator/overshoot"/>
+            </set>
+        </aapt:attr>
+    </target>
+
+</animated-vector>
